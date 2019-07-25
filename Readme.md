@@ -25,6 +25,8 @@ Push it to docker hub
 Change **manifest.yml** application name
 
 check the application name in **manifest.yml** and **wise-paas service list**
+![https://github.com/WISE-PaaS/example-js-docker-iothub/blob/master/source/service_list_rabbitmq_name.PNG](https://github.com/WISE-PaaS/example-js-docker-iothub/blob/master/source/service_list_rabbitmq_name.PNG)
+![https://github.com/WISE-PaaS/example-js-docker-iothub/blob/master/source/manifestname.PNG](https://github.com/WISE-PaaS/example-js-docker-iothub/blob/master/source/manifestname.PNG)
 
 Use cf(cloud foundry) push to WISE-PaaS
 
@@ -41,6 +43,7 @@ Edit the **publisher.py** `mqttUri` to mqtt=>uri you can find in env.json
 
 when you get it you need to change the host to  externalHosts
 
+![https://github.com/WISE-PaaS/example-js-docker-iothub/blob/master/source/externalhost.PNG](https://github.com/WISE-PaaS/example-js-docker-iothub/blob/master/source/externalhost.PNG)
 
 * uri :"VCAP_SERVICES => p-rabbitmq => mqtt => uri"
 * exnternalhost : "VCAP_SERVICES" => p-rabbitmq => externalHosts
