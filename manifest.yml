@@ -1,0 +1,10 @@
+---
+applications:
+- name: example-js-docker-iothub
+  
+  #buildpack: nodejs_buildpack
+  memory: 128M
+  disk_quota: 128M
+  command: node index.js
+services:
+- rabbitmq
