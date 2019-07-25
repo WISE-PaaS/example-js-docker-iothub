@@ -24,7 +24,7 @@ Tag image to a docker hub
 
 #### Change **manifest.yml** application name
 
-check the application name in **manifest.yml** and **wise-paas service list**
+check the Service Instance name in **manifest.yml** and **wise-paas service list**
 ![https://github.com/WISE-PaaS/example-js-docker-iothub/blob/master/source/service_list_rabbitmq_name.PNG](https://github.com/WISE-PaaS/example-js-docker-iothub/blob/master/source/service_list_rabbitmq_name.PNG)
 ![https://github.com/WISE-PaaS/example-js-docker-iothub/blob/master/source/manifestname.PNG](https://github.com/WISE-PaaS/example-js-docker-iothub/blob/master/source/manifestname.PNG)
 
