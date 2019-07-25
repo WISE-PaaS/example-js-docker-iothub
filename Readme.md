@@ -57,4 +57,4 @@ open two terminal
 
 .
 
-    node publisher.py
+    node publisher.js
