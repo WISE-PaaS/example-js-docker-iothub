@@ -2,6 +2,9 @@
 
 This example tell you how to use the WISE-PaaS rabbitmq service to receive and send message and we use docker package our application。
 
+####Download this repository
+    git clone https://github.com/WISE-PaaS/example-js-docker-iothub/
+
 #### Build docker image in local
  
     docker build -t {image name} .
