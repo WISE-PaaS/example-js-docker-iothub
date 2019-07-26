@@ -16,6 +16,9 @@ This example tell you how to use the WISE-PaaS rabbitmq service to receive and s
 Tag image to a docker hub  
 [Docker Hub](https://hub.docker.com/)
 
+    #docker login to the docker hub
+    docker login
+    
     #docker tag {image name} {your account/dockerhub-resp name}
     docker tag example-js-docker-iothub WISE-PaaS/example-js-docker-iothub
 
