@@ -53,6 +53,11 @@ check the Service Instance name in **manifest.yml** and **wise-paas service list
 
 #### Use cf(cloud foundry) push to WISE-PaaS
 
+![Imgur](https://i.imgur.com/JNJmxFy.png)
+
+    #cf login -a api.{domain name} -u {WISE-PaaS/EnSaaS account} -p {WISE-PaaS/EnSaaS password}
+    cf login -a api.wise-paas.io -u xxxxx@advantech.com -p xxxxxxxx
+
     #cf push --docker-image {your account/dockerhub-resp}
     cf push --docker-image WISE-PaaS/example-js-docker-iothub
 
