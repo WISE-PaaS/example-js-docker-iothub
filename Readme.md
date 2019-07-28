@@ -2,6 +2,21 @@
 
 This example tell you how to use the WISE-PaaS rabbitmq service to receive and send message and we use docker package our application。
 
+
+#### Environment Prepare
+
+node.js(need include npm)
+
+[https://nodejs.org/en/](https://nodejs.org/en/)
+
+cf-cli
+
+[https://docs.cloudfoundry.org/cf-cli/install-go-cli.html](https://docs.cloudfoundry.org/cf-cli/install-go-cli.html)
+
+docker
+
+[https://www.docker.com/](https://www.docker.com/)
+
 #### Download this repository
 
     git clone https://github.com/WISE-PaaS/example-js-docker-iothub/
