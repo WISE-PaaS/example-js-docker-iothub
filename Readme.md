@@ -47,8 +47,9 @@ Tag image to a docker hub
 #### Change **manifest.yml** application name to yours
 
 check the Service Instance name in **manifest.yml** and **wise-paas service list**
-![https://github.com/WISE-PaaS/example-js-docker-iothub/blob/master/source/service_list_rabbitmq_name.PNG](https://github.com/WISE-PaaS/example-js-docker-iothub/blob/master/source/service_list_rabbitmq_name.PNG)
-![https://github.com/WISE-PaaS/example-js-docker-iothub/blob/master/source/manifestname.PNG](https://github.com/WISE-PaaS/example-js-docker-iothub/blob/master/source/manifestname.PNG)
+![Imgur](https://i.imgur.com/rqZ6XL0.png)
+
+![Imgur](https://i.imgur.com/S2rX4uI.png)
 
 #### Use cf(cloud foundry) push to WISE-PaaS
 
@@ -65,7 +66,7 @@ Get application environment in WISE-PaaS
 
 when you get it you need to change the host to  externalHosts
 
-![https://github.com/WISE-PaaS/example-js-docker-iothub/blob/master/source/externalhost.PNG](https://github.com/WISE-PaaS/example-js-docker-iothub/blob/master/source/externalhost.PNG)
+![Imgur](https://i.imgur.com/xErDczu.png)
 
 * uri :"VCAP_SERVICES => p-rabbitmq => mqtt => uri"
 * exnternalhost : "VCAP_SERVICES" => p-rabbitmq => externalHosts
