@@ -1,9 +1,8 @@
 
-
 const mqtt = require('mqtt')
 
-//const mqttUri ='mqtt://f34cde9b-b664-4a94-baa8-e702148c60af%3A12983c35-3c84-47d5-a63b-c053d060af10:oJdl8HCvrNPSALZajVC5uJG6I@40.81.26.31:1883';
 
+const mqttUri = 'mqtt://f456d95d-b76f-43e9-8b35-bac8383bf941%3A25dbf2be-9d86-44e9-8bea-f01e82032052:AopU9zUuHB5z0Gtv5ymbSrs0D@40.81.27.10:1883'
 // Use mqttUri or connectOpts
 const client = mqtt.connect(mqttUri);
 
