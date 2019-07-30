@@ -80,6 +80,10 @@ check the Service Instance name in **manifest.yml** and **wise-paas service list
 - disk_quota: The disk we want to give to our app
 - command:
 
+Notice:You can add service instance by yourself
+
+![Imgur](https://i.imgur.com/ajqSsn1.png)
+
 #### application introduce
 
 `vcap_services` can get the environment on WISE-PaaS，
