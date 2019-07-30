@@ -11,15 +11,12 @@ var port = process.env.PORT || 3000;
 app.listen(port, (res, req) => {
   console.log(`listen port on ${port}`);
 });
-let vcap_services = JSON.parse(process.env.VCAP_SERVICES);
 
+let vcap_services = JSON.parse(process.env.VCAP_SERVICES);
 // Start Config
 var config = {};
-
 config.mqtt = {};
-
 /** Modify this config ***/
-// SYS
 config.timeout = 120 * 1000;
 //service name in wise-Paas
 config.mqtt.serviceName = "p-rabbitmq";
@@ -65,8 +62,6 @@ client.on("connect", function() {
 });
 
 client.on("message", function(topic, message) {
-  temp_data.push("[" + topic + "]:" + message.toString());
-
   console.log("[" + topic + "]:" + message.toString());
 });
 
@@ -81,8 +76,3 @@ client.on("close", function() {
 client.on("offline", function() {
   console.log("[MQTT]: offline");
 });
-
-//docker build -t try_js_docker
-//docker tag try_js_docker tsian077/try_js_docker
-//docker push tsian077/try_js_docker
-//cf push cf_docker_node --docker-image tsian077/try_js_docker -m 125m -k 256m
