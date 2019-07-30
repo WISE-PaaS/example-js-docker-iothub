@@ -84,7 +84,7 @@ Notice:You can add service instance by yourself
 
 ![Imgur](https://i.imgur.com/ajqSsn1.png)
 
-#### application introduce
+#### application introduce in `index.js`
 
 `vcap_services` can get the environment on WISE-PaaS，
 
