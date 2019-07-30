@@ -2,6 +2,8 @@
 
 This example tell you how to use the WISE-PaaS rabbitmq service to receive and send message and we use docker package our application。
 
+[cf-introduce](https://advantech.wistia.com/medias/ll0ov3ce9e)
+
 ## Environment Prepare
 
 #### node.js(need include npm)
@@ -13,7 +15,7 @@ This example tell you how to use the WISE-PaaS rabbitmq service to receive and s
 [cf-cli](https://docs.cloudfoundry.org/cf-cli/install-go-cli.html)
 
 Use to push application to WISE-PaaS，if you want to know more you can see this video
-[cf-introduce](https://advantech.wistia.com/medias/ll0ov3ce9e)
+
 
 #### docker
 
