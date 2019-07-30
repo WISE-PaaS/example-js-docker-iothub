@@ -141,7 +141,7 @@ Get application environment in WISE-PaaS
 
 #### Send message use mqtt
 
-Edit the **publisher.py** `mqttUri` you can find the `uri` in env.json
+Edit the **publisher.js** `mqttUri` you can find the `uri` in env.json
 
 - uri :"VCAP_SERVICES => p-rabbitmq => mqtt => uri"
 - exnternalhost : "VCAP_SERVICES" => p-rabbitmq => externalHosts
