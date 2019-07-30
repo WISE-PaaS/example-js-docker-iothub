@@ -78,7 +78,7 @@ check the Service Instance name in **manifest.yml** and **wise-paas service list
 - name: Define our application serviceName
 - memory: The memory we want to give to our app
 - disk_quota: The disk we want to give to our app
-- command:
+- command: Start the application
 
 Notice:You can add service instance by yourself
 
