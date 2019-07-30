@@ -97,7 +97,7 @@ Notice:The `config.mqtt.serviceName` mush be the same as the WISE-PaaS servicena
 This code use to connect to rabbitmq service，you can design the `client.on("message",)...`
 and make it save data or do other thing。
 
-```
+```js
 var client = mqtt.connect(config.mqtt.broker, config.mqtt.options);
 
 client.on("connect", function() {
