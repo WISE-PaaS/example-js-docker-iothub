@@ -21,49 +21,13 @@ Use to push application to WISE-PaaS，if you want to know more you can see this
 
 Use to packaged our application
 
+
+
 #### Download this repository
 
     git clone https://github.com/WISE-PaaS/example-js-docker-iothub.git
 
-## Build docker image in local
 
-#### Dockfile introduce
-
-This file can help us build a docker image
-it will use the node docker image first，it will download automatic，and save copy a file to /app ，next to install package by `npm install`，the port we set in `index.js` is 3000，and finally start it。
-
-```
-FROM node:8-alpine
-
-ADD . /app
-WORKDIR /app
-RUN npm install
-EXPOSE 3000
-CMD npm start
-```
-
-Use `docker build` to build our image，and it need to in path than we already define the Dockerfile
-
-    docker build -t {image name} .
-    docker build -t example-js-docker-iothub .
-
-#### Go to docker hub add a new **Repository**
-
-Tag image to a docker hub  
-[Docker Hub](https://hub.docker.com/)
-
-![Imgur](https://i.imgur.com/SxiLcOH.png)
-
-    #docker login to the docker hub
-    docker login
-
-    #docker tag {image name} {your account/dockerhub-resp name}
-    docker tag example-js-docker-iothub WISE-PaaS/example-js-docker-iothub
-
-#### Push it to docker hub
-
-    #docker push {your account/dockerhub-resp name}
-    docker push WISE-PaaS/example-js-docker-iothub
 
 #### Manifest.yml setting
 
@@ -122,6 +86,46 @@ client.on("offline", function() {
 });
 
 ```
+
+## Build docker image in local
+
+#### Dockfile introduce
+
+This file can help us build a docker image
+it will use the node docker image first，it will download automatic，and save copy a file to /app ，next to install package by `npm install`，the port we set in `index.js` is 3000，and finally start it。
+
+```
+FROM node:8-alpine
+
+ADD . /app
+WORKDIR /app
+RUN npm install
+EXPOSE 3000
+CMD npm start
+```
+
+Use `docker build` to build our image，and it need to in path than we already define the Dockerfile
+
+    docker build -t {image name} .
+    docker build -t example-js-docker-iothub .
+
+#### Go to docker hub add a new **Repository**
+
+Tag image to a docker hub  
+[Docker Hub](https://hub.docker.com/)
+
+![Imgur](https://i.imgur.com/SxiLcOH.png)
+
+    #docker login to the docker hub
+    docker login
+
+    #docker tag {image name} {your account/dockerhub-resp name}
+    docker tag example-js-docker-iothub WISE-PaaS/example-js-docker-iothub
+
+#### Push it to docker hub
+
+    #docker push {your account/dockerhub-resp name}
+    docker push WISE-PaaS/example-js-docker-iothub
 
 #### Push to WISE-PaaS
 
