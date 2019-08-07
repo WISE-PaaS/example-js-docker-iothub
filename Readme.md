@@ -2,11 +2,9 @@
 
 This example tell you how to use the WISE-PaaS rabbitmq service to receive and send message and we use docker package our application。
 
-[cf-introduce](https://advantech.wistia.com/medias/ll0ov3ce9e)
+[cf-introduce Training Video](https://advantech.wistia.com/medias/ll0ov3ce9e)
 
-
-[IotHub](https://advantech.wistia.com/medias/up3q2vxvn3)
-
+[IotHub Training Video](https://advantech.wistia.com/medias/up3q2vxvn3)
 
 ## Environment Prepare
 
@@ -20,14 +18,11 @@ This example tell you how to use the WISE-PaaS rabbitmq service to receive and s
 
 Use to push application to WISE-PaaS，if you want to know more you can see this video
 
-
 #### docker
 
 [docker](https://www.docker.com/)
 
 Use to packaged our application
-
-
 
 #### Download this repository
 
@@ -44,11 +39,15 @@ Use to packaged our application
     #check the cf status
     cf target
 
-#### Manifest.yml setting
+#### Manifest.yml
 
-Change **manifest.yml** application name to yours
+The file save the config when we push our application to the WISE-PaaS。
 
-check the Service Instance name in **manifest.yml** and **wise-paas service list**
+(Change **manifest.yml** application name to yours，because i already use it。)
+
+And we need to bind the rabbitmq(iothub) service in our application so we write it to **manifest.yml**
+
+(check the Service Instance name in **manifest.yml** and **wise-paas service list**，if you doesn't have it，you can create one by click add button)
 
 ![Imgur](https://i.imgur.com/rqZ6XL0.png)
 
@@ -63,7 +62,68 @@ Notice:You can add service instance by yourself
 
 ![Imgur](https://i.imgur.com/ajqSsn1.png)
 
-#### application introduce in `index.js`
+## Application Introduce
+
+#### index.js
+
+This is a simple backend application and we can get the application config in WISE-PaaS
+
+```js
+const express = require("express");
+const mqtt = require("mqtt");
+
+const app = express();
+
+app.get("/", (req, res) => {
+  res.send("mqtt and iothub");
+});
+
+var port = process.env.PORT || 3000;
+app.listen(port, (res, req) => {
+  console.log(`listen port on ${port}`);
+});
+
+let vcap_services = JSON.parse(process.env.VCAP_SERVICES);
+// Start Config
+var config = {};
+config.mqtt = {};
+/** Modify this config ***/
+config.timeout = 120 * 1000;
+//service name in wise-Paas
+config.mqtt.serviceName = "p-rabbitmq";
+
+if (process.env.VCAP_SERVICES != null) {
+  console.log("Using VCAP_SERVICES");
+  let vcap_services = JSON.parse(process.env.VCAP_SERVICES);
+}
+
+// Parsing credentials from VCAP_SERVICES for binding service
+if (vcap_services[config.mqtt.serviceName]) {
+  console.log("Parsing " + config.mqtt.serviceName);
+  config.mqtt.broker =
+    "mqtt://" +
+    vcap_services[config.mqtt.serviceName][0].credentials.protocols.mqtt.host;
+  config.mqtt.username = vcap_services[
+    config.mqtt.serviceName
+  ][0].credentials.protocols.mqtt.username.trim();
+  config.mqtt.password = vcap_services[
+    config.mqtt.serviceName
+  ][0].credentials.protocols.mqtt.password.trim();
+  config.mqtt.port =
+    vcap_services[config.mqtt.serviceName][0].credentials.protocols.mqtt.port;
+}
+//MQTT config
+config.mqtt.options = {
+  broker: config.mqtt.broker,
+  reconnectPeriod: 1000,
+  port: config.mqtt.port,
+  username: config.mqtt.username,
+  password: config.mqtt.password
+};
+
+config.mqtt.topic = "/hello"; //top we listen
+config.mqtt.retain = true; // MQTT Publish Retain
+```
 
 `vcap_services` can get the environment on WISE-PaaS，
 
@@ -99,20 +159,16 @@ client.on("close", function() {
 client.on("offline", function() {
   console.log("[MQTT]: offline");
 });
-
 ```
-
 
 ## SSO(Single Sign On)
 
 This is the [sso](https://advantech.wistia.com/medias/vay5uug5q6) applicaition，open **`templates/index.html`** and editor the `ssoUrl` to your application name，
 
 If you don't want it，you can ignore it。
-  
+
     #change this **`python-demo-try`** to your **application name**
     var ssoUrl = myUrl.replace('python-demo-try', 'portal-sso');
-
-
 
 ## Build docker image in local
 
@@ -170,7 +226,38 @@ Get application environment in WISE-PaaS
 
     cf env example-js-docker-iothub > env.json
 
-#### Send message use mqtt
+## Send message use mqtt
+
+#### Publisher.js
+
+```js
+const mqtt = require("mqtt");
+
+const mqttUri =
+  "mqtt://xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx%3A0516aa2a-0fe5-4683-a9d6-072dcf64df3c:Z2lUsjpx2y0KsohXeytcrRVeQ@40.81.27.10:1883";
+// Use mqttUri or connectOpts
+
+const client = mqtt.connect(mqttUri);
+
+client.on("connect", connack => {
+  setInterval(() => {
+    publishMockTemp();
+  }, 3000);
+});
+
+// Publish mock random temperature periodically
+function publishMockTemp() {
+  const temp = Math.floor(Math.random() * 7 + 22);
+  client.publish("/hello", temp.toString(), { qos: 2 }, (err, packet) => {
+    //if (!err) console.log('Data sent to /hello' + temp);
+    if (err) {
+      console.log(err);
+    } else {
+      console.log("Data send to /hello " + temp);
+    }
+  });
+}
+```
 
 Edit the **publisher.js** `mqttUri` you can find the `uri` in env.json
 
