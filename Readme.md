@@ -26,7 +26,11 @@ Use to packaged our application
 
 #### Download this repository
 
+    #download this repository
     git clone https://github.com/WISE-PaaS/example-js-docker-iothub.git
+    
+    #download what package the application need
+    npm install
 
 ## Login to WISE-PaaS
 
